@@ -1,5 +1,321 @@
-remote_theme: pages-themes/time-machine@v0.2.0
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your entire site, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# `jekyll serve -l -H localhost`. If you change this file, please restart the 
+# server process.
+
+# Basic Site Settings
+locale                   : "en-US"
+site_theme               : "default"
+title                    : "Apoorva Mahadik - Software Engineer"
+title_separator          : "|"
+name                     : &name "Apoorva Mahadik"
+description              : &description "Software Engineer & AI/ML Enthusiast | Building scalable systems with impact"
+url                      : https://apoorvamahadik.github.io # Replace with your actual GitHub Pages URL
+baseurl                  : "" 
+repository               : "apoorvamahadik/apoorvamahadik.github.io" # Replace with your repo
+
+# Site Author - The following control what appear as part of the author content on the side bar.
+#               If a field is blank the icon and link will not appear, otherwise it will be shown.
+#               Additional customization can be done by editing /_includes/author-profile.html
+author:
+  # Biographic information
+  avatar           : "profile.png" # Upload your photo to /images/profile.png
+  name             : "Apoorva Mahadik"
+  pronouns         : # Optional
+  bio              : "Creative problem-solver passionate about building scalable, AI-driven systems. Turning complexity into clarity with curiosity, collaboration, and impact."
+  location         : "Maryland, USA"
+  employer         : "Johns Hopkins University"
+  uri              : # URL
+  email            : "amahadil@jh.edu"
+
+  # Academic websites
+  academia         : # Optional
+  arxiv            : # Optional
+  googlescholar    : # Optional
+  inspire-hep      : # Optional
+  impactstory      : # Optional
+  orcid            : # Optional
+  semantic         : # Optional
+  ssrn             : # Optional
+  pubmed           : # Optional
+  researchgate     : # Optional
+  scopus           : # Optional
+  zotero           : # Optional
+
+  # Repositories and software development
+  bitbucket        : # Optional
+  codepen          : # Optional
+  dribbble         : # Optional
+  github           : "apoorvamahadik"
+  kaggle           : # Optional
+  stackoverflow    : # Optional
+
+  # Social media
+  artstation       : # Optional
+  bluesky          : # Optional
+  facebook         : # Optional
+  flickr           : # Optional
+  foursquare       : # Optional
+  goodreads        : # Optional
+  google_plus      : # Optional
+  keybase          : # Optional
+  instagram        : # Optional
+  lastfm           : # Optional
+  linkedin         : "apoorva-mahadik"
+  mastodon         : # Optional
+  medium           : # Optional
+  pinterest        : # Optional
+  soundcloud       : # Optional
+  steam            : # Optional
+  telegram         : # Optional
+  tumblr           : # Optional
+  twitter          : # Optional
+  vine             : # Optional
+  weibo            : # Optional
+  wikipedia        : # Optional
+  xing             : # Optional
+  youtube          : # Optional
+  zhihu            : # Optional
+
+# Publication Category - The following the list of publication categories and their headings
+publication_category:
+  books:
+    title: 'Books'
+  manuscripts:
+    title: 'Journal Articles'
+  conferences:
+    title: 'Conference Papers'
+
+# Site Settings
+teaser                   :  # Optional: filename for social media preview
+breadcrumbs              : false
+words_per_minute         : 160
+future                   : true
+read_more                : "disabled"
+talkmap_link             : false
+comments:
+  provider               : false
+  disqus:
+    shortname            :
+  discourse:
+    server               :
+  facebook:
+    appid                :
+    num_posts            : 5
+    colorscheme          : "light"
+staticman:
+  allowedFields          : ['name', 'email', 'url', 'message']
+  branch                 : "gh-pages"
+  commitMessage          : "New comment."
+  filename               : comment-{@timestamp}
+  format                 : "yml"
+  moderation             : true
+  path                   : "_data/comments/{options.slug}"
+  requiredFields         : ['name', 'email', 'message']
+  transforms:
+    email                : "md5"
+  generatedFields:
+    date:
+      type               : "date"
+      options:
+        format           : "iso8601"
+atom_feed:
+  hide                   : false
+  path                   :
+
+# SEO Related
+google_site_verification :
+bing_site_verification   :
+alexa_site_verification  :
+yandex_site_verification :
+
+# Social Sharing
+twitter:
+  username               : &twitter # Optional
+facebook:
+  username               :
+  app_id                 :
+  publisher              :
+og_image                 :  # Optional
+og_description           :  # Optional
+social:
+  type                   : Person
+  name                   : Apoorva Mahadik
+  links: []
+
+# Analytics
+analytics:
+  provider               : false # Set to "google" or "google-analytics-4" if needed
+  google:
+    tracking_id          :
+
+# Reading Files
+include:
+  - .htaccess
+  - _pages
+  - files
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .github
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/_main.js
+  - assets/js/plugins
+  - assets/js/vendor
+  - CHANGELOG
+  - Capfile
+  - config
+  - Dockerfile
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - local
+  - log
+  - node_modules
+  - package.json*
+  - Rakefile
+  - README
+  - tmp
+  - vendor
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# These settings control the types of collections used by the template
+collections:
+  teaching:
+    output: true
+    permalink: /:collection/:path/
+  publications:
+    output: true
+    permalink: /:collection/:path/
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+  talks:
+    output: true
+    permalink: /:collection/:path/
+
+# These settings control how pages and collections are included in the site
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: true
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  # _teaching
+  - scope:
+      path: ""
+      type: teaching
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: false
+  # _publications
+  - scope:
+      path: ""
+      type: publications
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: false
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comment: false
+  # _talks
+  - scope:
+      path: ""
+      type: talks
+    values:
+      layout: talk
+      author_profile: true
+      share: true
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Outputting
+permalink: /:categories/:title/
+timezone: America/New_York
+
+# Plugins
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
-title: Apoorva Mahadik
-description: Creative problem-solver engineering AI-driven systems. Turning complexity into clarity with curiosity, collaboration, and impact.
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jemoji
+
+# Mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jemoji
+
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# HTML Compression
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
