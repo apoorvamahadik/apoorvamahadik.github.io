@@ -50,19 +50,85 @@ Currently pursuing my **M.S.E. in Computer Science at Johns Hopkins University**
 
 ---
 
-## 🛠️ Projects
+## 🚀 Projects
 
-### **Real-Time Collaborative Code Editor**
-*TypeScript, React, Node.js, Docker, MongoDB*  
-A full-stack collaborative coding platform supporting **50+ concurrent users** with **50ms sync latency** using operational transforms and WebSockets.
+### 🔹 Real-Time Collaborative Code Editor
+**TypeScript · React · Node.js · WebSockets · Docker · MongoDB**  
 
-### **E-Commerce GraphQL Database Recommendation System**
-*Neo4j, Python, PostgreSQL, React*  
-Graph-based recommendation engine integrated with NLP, boosting recommendation relevance by **40%** through analysis of **50K+ multilingual reviews**.
 
-### **ATLAS – AI Study Buddy**
-*FastAPI, Firebase, React, LangChain, OpenAI*  
-Cloud-deployed AI study assistant that generates personalized schedules via LLM-driven task decomposition and automated reasoning for multi-course workloads.
+A full-stack, low-latency collaborative coding platform inspired by real-world developer tools.
+
+- Built a **real-time multi-user code editor** supporting **50+ concurrent users** with **~50ms synchronization latency** using **operational transforms** and WebSockets.
+- Designed a **scalable backend architecture** with Node.js microservices and MongoDB for session management and persistence.
+- Containerized services using **Docker**, enabling fault isolation, horizontal scalability, and consistent deployments.
+- Focused on **real-time consistency, concurrency control, and performance optimization** in distributed systems.
+
+---
+
+### 🔹 E-Commerce GraphQL Database Recommendation System
+**Neo4j · Python · PostgreSQL · React · Flask**  
+
+
+A data-driven recommendation and analytics platform built on the **Olist Brazilian E-Commerce dataset**.
+
+- Engineered a **graph-based recommendation engine** using **Neo4j**, modeling user–product–review relationships for high-quality recommendations.
+- Integrated **NLP pipelines** to analyze **50K+ multilingual customer reviews**, improving recommendation relevance by **~40%**.
+- Designed a **high-performance PostgreSQL backend** with optimized schemas, indexing strategies, and analytical queries.
+- Built an interactive **React-based analytics dashboard** visualizing revenue, delivery performance, and sentiment in real time.
+- Demonstrates the combined power of **graph and relational databases** in real-world e-commerce systems.
+
+---
+
+### 🔹 ATLAS – AI Study Buddy
+**FastAPI · LangChain · OpenAI APIs · Firebase · React · Render**  
+
+
+An AI-powered productivity assistant for planning and optimizing academic workloads.
+
+- Developed a **cloud-deployed AI study assistant** using **FastAPI and LangChain**, leveraging LLMs for intelligent task decomposition and schedule generation.
+- Enabled **automatic file parsing** (`.pdf`, `.ics`) and contextual reasoning for personalized multi-course study plans.
+- Built a **scalable full-stack system** with React and Firebase supporting calendar sync, task tracking, reminders, and notifications.
+- Designed an **extensible agent framework** for future features such as summaries, quizzes, and flashcards.
+- Emphasized **practical AI orchestration** with structured reasoning and real user workflows.
+
+---
+
+### 🔹 Personalized Product Recommendation Engine
+**Python · TensorFlow · Apache Spark · PostgreSQL**  
+
+
+A large-scale recommendation system focused on engagement and performance optimization.
+
+- Built a **hybrid recommendation engine** processing high-volume user interaction data using **Apache Spark**.
+- Improved **click-through rate by 25%** and **user engagement by 18%** through optimized TensorFlow inference.
+- Conducted **A/B testing** to validate model improvements and guide iterative optimization.
+- Gained hands-on experience with **distributed data processing and ML pipelines**.
+
+---
+
+### 🔹 Facial Expression Recognition
+**Python · OpenCV · CNNs · TensorFlow**  
+
+
+A real-time computer vision project focused on emotion detection.
+
+- Developed a **CNN-based facial expression recognition model** achieving **~78% accuracy** on static images.
+- Extended the system to **real-time video streams**, optimizing frame preprocessing to reduce inference latency.
+- Strengthened understanding of **computer vision pipelines, deep learning models, and performance trade-offs**.
+
+---
+
+### 🔹 Malicious URL Detection  
+**Python · Scikit-learn · Feature Engineering · ML Pipelines**  
+*SIH Hackathon – 🥉 3rd Place*
+
+A cybersecurity-focused machine learning solution for phishing detection.
+
+- Designed a **malicious URL detection pipeline** achieving **~95% accuracy** using engineered lexical and statistical features.
+- Trained and evaluated multiple ML classifiers to optimize precision and recall.
+- Deployed a **lightweight inference service** enabling near real-time URL risk scoring.
+- Awarded **3rd place at the Smart India Hackathon**, competing against teams nationwide.
+
 
 ---
 
