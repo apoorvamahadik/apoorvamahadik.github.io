@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apoorva Mahadik — Software Engineer & AI/ML</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e6f0;
+    --muted: #7b78a0;
+    --accent: #b8a9ff;
+    --accent2: #7ee8c2;
+    --accent3: #f5a97f;
+    --tag-bg: rgba(184,169,255,0.08);
+    --tag-border: rgba(184,169,255,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,169,255,0.06) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(126,232,194,0.05) 0%, transparent 70%);
+    bottom: 50px; left: 10%;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 600; }
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.65s forwards;
+  }
+  .btn-primary {
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #0a0a0f;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none; border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-outline {
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--border2); border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .hero-scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 3rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    display: flex; align-items: center; gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 1s forwards;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, var(--muted), transparent);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+  }
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 5rem;
+  }
+  .stat-cell {
+    padding: 1.75rem 1.5rem;
+    background: var(--bg2);
+    transition: background 0.2s;
+  }
+  .stat-cell:hover { background: var(--bg3); }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* EXPERIENCE */
+  .exp-grid { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { padding-top: 0.15rem; }
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent2);
+    display: block;
+  }
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.7;
+  }
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+  .exp-bullets strong { color: var(--text); font-weight: 600; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .proj-card {
+    background: var(--bg2);
+    padding: 2rem;
+    transition: background 0.25s;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .proj-card:hover { background: var(--bg3); }
+  .proj-card:hover .proj-arrow { opacity: 1; transform: translate(2px, -2px); }
+  .proj-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+  .proj-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .proj-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .proj-desc strong { color: var(--accent3); font-weight: 600; }
+  .proj-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 3px;
+    color: var(--accent);
+  }
+  .proj-arrow {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-size: 1rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .skill-block {
+    background: var(--bg2);
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .skill-block:hover { background: var(--bg3); }
+  .skill-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+  }
+  .skill-items {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .skill-pill {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.65rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* EDUCATION & CERTS */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .edu-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: var(--border2); }
+  .edu-school {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.35rem;
+  }
+  .edu-degree {
+    font-size: 0.82rem;
+    color: var(--accent2);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .edu-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+  .edu-courses {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .certs-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .cert-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .cert-item:hover { border-color: var(--border2); }
+  .cert-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .cert-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    text-align: center;
+    padding: 7rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(184,169,255,0.04) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .contact-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .contact-title em { font-style: italic; color: var(--accent); }
+  .contact-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-links {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* PUBLICATION */
+  .pub-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    transition: border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .pub-card:hover { border-color: var(--border2); }
+  .pub-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .pub-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .pub-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .pub-badge {
+    background: rgba(126,232,194,0.08);
+    border: 1px solid rgba(126,232,194,0.2);
+    border-radius: 4px;
+    padding: 0.5rem 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .edu-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
+    .contact-section { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AM</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">Software Engineer · AI/ML · Cloud Systems</p>
+  <h1 class="hero-name">Apoorva<br><em>Mahadik</em></h1>
+  <p class="hero-desc">
+    Building <strong>scalable, AI-driven systems</strong> that bridge engineering and real-world impact.
+    M.S.E. Computer Science at Johns Hopkins · 4 years at Deloitte · IEEE-published researcher.
+  </p>
+  <div class="hero-ctas">
+    <a href="https://linkedin.com/in/apoorva-mahadik" class="btn-primary" target="_blank">LinkedIn</a>
+    <a href="https://github.com/apoorvamahadik" class="btn-outline" target="_blank">GitHub</a>
+    <a href="mailto:amahadi1@jh.edu" class="btn-outline">Get in touch</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <span class="scroll-line"></span>
+    <span>Scroll to explore</span>
+  </div>
+</header>
+
+<!-- STATS -->
+<section>
+  <div class="stats-row">
+    <div class="stat-cell">
+      <span class="stat-num">4+</span>
+      <span class="stat-label">Years at Deloitte</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">94%</span>
+      <span class="stat-label">Forecasting accuracy</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">80%</span>
+      <span class="stat-label">QA effort reduced</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">30%</span>
+      <span class="stat-label">ETL throughput gain</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">20+</span>
+      <span class="stat-label">IEEE citations</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">100K+</span>
+      <span class="stat-label">Users served</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">// 01</p>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-grid">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Jun 2023 – Sep 2025</span>
+        <span class="exp-company">Deloitte</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Software Engineer II</h3>
+        <ul class="exp-bullets">
+          <li>Collaborated across the full SDLC on a <strong>highly scalable SAS IFRS 17 financial compliance platform</strong>, handling design, coding, reviews, testing, and release support.</li>
+          <li>Eliminated <strong>80% of manual QA effort</strong> by implementing an automation-first testing approach with Python-based frameworks.</li>
+          <li>Improved production reliability by resolving <strong>25+ priority defects</strong> through structured RCAs and systematic debugging.</li>
+          <li>Collaborated cross-functionally with product, QA, and infrastructure teams in an agile environment using Git and GitHub.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Jul 2021 – May 2023</span>
+        <span class="exp-company">Deloitte</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Software Engineer I</h3>
+        <ul class="exp-bullets">
+          <li>Engineered distributed ETL pipelines on <strong>AWS using Spark, PySpark, and S3</strong>, improving throughput by <strong>30%</strong>.</li>
+          <li>Built Python-based analytics and APIs processing unstructured data for <strong>100K+ users</strong>.</li>
+          <li>Designed and optimized relational data models using advanced SQL across <strong>Teradata and PostgreSQL</strong>.</li>
+          <li>Delivered stakeholder-facing dashboards in <strong>Power BI</strong>, communicating insights directly to leadership.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Present</span>
+        <span class="exp-company">Johns Hopkins University</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Course Advisor — Databases</h3>
+        <ul class="exp-bullets">
+          <li>Support graduate-level <strong>EN.601.315/415/615 Databases</strong> course with grading, mentoring, and weekly office hours.</li>
+          <li>Mentor students on system design, REST APIs, debugging, and documentation across Python and database projects.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Jan 2021 – Jun 2021</span>
+        <span class="exp-company">SNDT University</span>
+      </div>
+      <div>
+        <h3 class="exp-role">Research Assistant</h3>
+        <ul class="exp-bullets">
+          <li>Engineered a <strong>hybrid LSTM–ARIMA forecasting model</strong> using TensorFlow and Keras, achieving <strong>94% prediction accuracy</strong> on financial time-series data.</li>
+          <li>Authored research findings leading to an <strong>IEEE-recognized publication with 20+ citations</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// 02</p>
+  <h2 class="section-title">Selected Projects</h2>
+  <div class="projects-grid">
+
+    <a href="https://github.com/apoorvamahadik" class="proj-card" target="_blank">
+      <span class="proj-num">01</span>
+      <h3 class="proj-title">ATLAS — AI Study Buddy</h3>
+      <p class="proj-desc">Cloud-deployed AI assistant using <strong>FastAPI, LangChain, and OpenAI APIs</strong> for personalized study scheduling via LLM-driven task decomposition and file parsing.</p>
+      <div class="proj-tags">
+        <span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">OpenAI</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="https://github.com/apoorvamahadik" class="proj-card" target="_blank">
+      <span class="proj-num">02</span>
+      <h3 class="proj-title">E-Commerce Graph Recommendation System</h3>
+      <p class="proj-desc">Graph-based engine on <strong>Neo4j + PostgreSQL</strong> integrating NLP across 50K+ multilingual reviews, <strong>boosting recommendation relevance by 40%</strong>.</p>
+      <div class="proj-tags">
+        <span class="tag">Neo4j</span><span class="tag">PostgreSQL</span><span class="tag">Python</span><span class="tag">React</span><span class="tag">Flask</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="https://github.com/apoorvamahadik" class="proj-card" target="_blank">
+      <span class="proj-num">03</span>
+      <h3 class="proj-title">Real-Time Collaborative Code Editor</h3>
+      <p class="proj-desc">Full-stack platform supporting <strong>10+ concurrent users</strong> with ~50ms sync latency via WebSockets and operational transforms. Containerized with Docker.</p>
+      <div class="proj-tags">
+        <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Docker</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="https://github.com/apoorvamahadik" class="proj-card" target="_blank">
+      <span class="proj-num">04</span>
+      <h3 class="proj-title">Malicious URL Detection</h3>
+      <p class="proj-desc">Cybersecurity ML pipeline achieving <strong>~95% accuracy</strong> using engineered lexical and statistical features. <strong>3rd place at Smart India Hackathon</strong>.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">ML Pipelines</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="https://github.com/apoorvamahadik" class="proj-card" target="_blank">
+      <span class="proj-num">05</span>
+      <h3 class="proj-title">Facial Expression Recognition</h3>
+      <p class="proj-desc">CNN-based model achieving <strong>~78% accuracy</strong> extended to real-time video streams, optimizing frame preprocessing for reduced inference latency.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span><span class="tag">CNNs</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+    <a href="https://ieeexplore.ieee.org/document/9532655" class="proj-card" target="_blank">
+      <span class="proj-num">06</span>
+      <h3 class="proj-title">IEEE: LSTM–ARIMA Forecasting</h3>
+      <p class="proj-desc">Lead-authored hybrid deep learning + statistical forecasting model achieving <strong>94% prediction accuracy</strong>. Published on IEEE Xplore with <strong>20+ citations</strong>.</p>
+      <div class="proj-tags">
+        <span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Python</span><span class="tag">IEEE</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">// 03</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-category">Languages</div>
+      <div class="skill-items">
+        <span class="skill-pill">Python</span><span class="skill-pill">Java</span><span class="skill-pill">C++</span><span class="skill-pill">TypeScript</span><span class="skill-pill">SQL</span><span class="skill-pill">R</span><span class="skill-pill">HTML5/CSS3</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">Cloud & Distributed</div>
+      <div class="skill-items">
+        <span class="skill-pill">AWS</span><span class="skill-pill">Azure</span><span class="skill-pill">Spark</span><span class="skill-pill">Hadoop</span><span class="skill-pill">Docker</span><span class="skill-pill">Kubernetes</span><span class="skill-pill">Microservices</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">Frameworks & Tools</div>
+      <div class="skill-items">
+        <span class="skill-pill">React</span><span class="skill-pill">Node.js</span><span class="skill-pill">FastAPI</span><span class="skill-pill">Flask</span><span class="skill-pill">LangChain</span><span class="skill-pill">Git</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">Databases</div>
+      <div class="skill-items">
+        <span class="skill-pill">PostgreSQL</span><span class="skill-pill">MongoDB</span><span class="skill-pill">Neo4j</span><span class="skill-pill">Redis</span><span class="skill-pill">Teradata</span><span class="skill-pill">Firebase</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">AI / ML</div>
+      <div class="skill-items">
+        <span class="skill-pill">TensorFlow</span><span class="skill-pill">PyTorch</span><span class="skill-pill">Keras</span><span class="skill-pill">NLP</span><span class="skill-pill">Deep Learning</span><span class="skill-pill">ETL Pipelines</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-category">DevSecOps & BI</div>
+      <div class="skill-items">
+        <span class="skill-pill">CI/CD</span><span class="skill-pill">Power BI</span><span class="skill-pill">Tableau</span><span class="skill-pill">Databricks</span><span class="skill-pill">Cybersecurity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">// 04</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h3 class="edu-school">Johns Hopkins University</h3>
+      <p class="edu-degree">M.S.E. Computer Science · GPA 3.3</p>
+      <p class="edu-period">Aug 2025 – Dec 2026</p>
+      <p class="edu-courses">Artificial Intelligence · Computer Vision · System Design · Algorithms · Object-Oriented Software Engineering · Databases</p>
+    </div>
+    <div class="edu-card">
+      <h3 class="edu-school">SNDT University</h3>
+      <p class="edu-degree">B.E. Computer Science & Technology · GPA 3.63</p>
+      <p class="edu-period">Jul 2017 – Aug 2021</p>
+      <p class="edu-courses">Data Structures · Operating Systems · Computer Networks · Big Data · Data Science and Business Analytics</p>
+    </div>
+  </div>
+
+  <div class="certs-list">
+    <div class="cert-item"><span class="cert-dot"></span><span class="cert-name">AWS Certified Cloud Practitioner</span></div>
+    <div class="cert-item"><span class="cert-dot"></span><span class="cert-name">Azure Fundamentals (AZ-900)</span></div>
+    <div class="cert-item"><span class="cert-dot"></span><span class="cert-name">Azure Data Fundamentals (DP-900)</span></div>
+    <div class="cert-item"><span class="cert-dot"></span><span class="cert-name">Power BI Data Analyst (PL-300)</span></div>
+    <div class="cert-item"><span class="cert-dot"></span><span class="cert-name">Databricks Developer/Lakehouse</span></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PUBLICATION -->
+<section>
+  <p class="section-label">// 05</p>
+  <h2 class="section-title">Publication</h2>
+  <a href="https://ieeexplore.ieee.org/document/9532655" class="pub-card" target="_blank">
+    <div>
+      <p class="pub-meta">IEEE Xplore · May 2021 · 20+ Citations</p>
+      <h3 class="pub-title">Stock Price Prediction using LSTM and ARIMA</h3>
+      <p class="pub-desc">Lead-authored paper proposing a hybrid deep learning and statistical forecasting model. Designed experiments, implemented models, and achieved 94% prediction accuracy on financial time-series data.</p>
+    </div>
+    <span class="pub-badge">↗ IEEE</span>
+  </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-bg"></div>
+  <h2 class="contact-title">Let's build<br><em>something</em> great.</h2>
+  <p class="contact-sub">Open to SWE and data science opportunities. F-1 · CPT/OPT eligible.</p>
+  <a href="mailto:amahadi1@jh.edu" class="btn-primary" style="font-size:0.85rem; padding: 0.9rem 2.5rem;">amahadi1@jh.edu</a>
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/apoorva-mahadik" class="contact-link" target="_blank">LinkedIn</a>
+    <a href="https://github.com/apoorvamahadik" class="contact-link" target="_blank">GitHub</a>
+    <a href="https://apoorvamahadik.github.io" class="contact-link" target="_blank">Portfolio</a>
+    <a href="https://ieeexplore.ieee.org/document/9532655" class="contact-link" target="_blank">IEEE Paper</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Apoorva Mahadik</span>
+  <span class="footer-copy">Baltimore, MD · F-1 Visa · CPT/OPT Eligible</span>
+</footer>
+
+</body>
+</html>
