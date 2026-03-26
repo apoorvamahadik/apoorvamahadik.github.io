@@ -1,7 +1,25 @@
-title: Hacker theme
-description: Hacker is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-hacker
-title: apoorva's resume
-description: "Software Engineer & AI/ML Enthusiast | Building scalable systems with impact"
+title: Apoorva Mahadik
+description: "Software Engineer & AI/ML Enthusiast | M.S.E. Computer Science, Johns Hopkins University"
+url: "https://apoorvamahadik.github.io"
+baseurl: ""
+
+# Use a minimal theme — we're using our own custom HTML/CSS
+theme: minima
+
+# Disable default Jekyll processing of our custom HTML
+include:
+  - index.html
+
+plugins:
+  - jekyll-seo-tag
+
+# SEO
+author: Apoorva Mahadik
+twitter:
+  username: apoorvamahadik
+social:
+  name: Apoorva Mahadik
+  links:
+    - https://linkedin.com/in/apoorva-mahadik
+    - https://github.com/apoorvamahadik
+    - https://ieeexplore.ieee.org/document/9532655
